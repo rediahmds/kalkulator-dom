@@ -73,9 +73,17 @@ function updateResult(resultObject) {
     resultElement.innerText = `${firstOperand} ${operator} ${secondOperand} = ${result}`;
 }
 
+function setOperandValueOnClear() {
+  const firstOperand = document.getElementById('first-operand');
+  const secondOperand = document.getElementById('second-operand');
+  firstOperand.value = '';
+  secondOperand.value = '';
+}
+
 function clearResult() {
   const resultElement = document.getElementById('result');
   resultElement.innerText = 'The calculation result will show up here';
+  setOperandValueOnClear();
 }
 
 const sumButton = document.getElementById('operator-sum');
