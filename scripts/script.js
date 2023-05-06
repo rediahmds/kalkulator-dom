@@ -7,7 +7,7 @@ function calculate(firstOperand, secondOperand, operator) {
       return firstOperand + secondOperand;
     case '-':
       return firstOperand - secondOperand;
-    case '*':
+    case 'x':
       return firstOperand * secondOperand;
     case '/':
       return firstOperand / secondOperand;
@@ -42,4 +42,34 @@ sumButton.addEventListener('click', function () {
   updateResult(result);
 });
 
-// TODO: Fix refresh everytime button is clicked
+const subtractButton = document.getElementById('operator-subtract');
+subtractButton.addEventListener('click', function () {
+  const firstOperand = getOperandValueByID('first-operand');
+  const secondOperand = getOperandValueByID('second-operand');
+  const result = calculate(firstOperand, secondOperand, '-');
+  updateResult(result);
+});
+
+const multiplyButton = document.getElementById('operator-multiply');
+multiplyButton.addEventListener('click', function () {
+  const firstOperand = getOperandValueByID('first-operand');
+  const secondOperand = getOperandValueByID('second-operand');
+  const result = calculate(firstOperand, secondOperand, 'x');
+  updateResult(result);
+});
+
+const divisionButton = document.getElementById('operator-divide');
+divisionButton.addEventListener('click', function () {
+  const firstOperand = getOperandValueByID('first-operand');
+  const secondOperand = getOperandValueByID('second-operand');
+  const result = calculate(firstOperand, secondOperand, '/');
+  updateResult(result);
+});
+
+const powerButton = document.getElementById('operator-power');
+powerButton.addEventListener('click', function () {
+  const firstOperand = getOperandValueByID('first-operand');
+  const secondOperand = getOperandValueByID('second-operand');
+  const result = calculate(firstOperand, secondOperand, '^');
+  updateResult(result);
+});
