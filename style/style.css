@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+.btn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 18px;
+  font-size: 15px;
+  padding: 5px 15px 5px 15px;
+  text-decoration: none;
+  margin: 0.5rem 0.2rem 0.5rem auto;
+}
+
+.btn-danger {
+  background-color: #f01a1a;
+  color: azure;
+}

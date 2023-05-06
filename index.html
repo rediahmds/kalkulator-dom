@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/style.css" />
     <title>Kalkulator DOM | Redi Ahmad</title>
   </head>
   <body>
@@ -11,22 +12,24 @@
       <h1>SIMPLE CALCULATOR</h1>
       <form action="">
         <label for="first-operand">First Operand</label>
+        <br />
         <input type="text" name="first-operand" id="first-operand" />
         <div class="operators">
-          <button id="operator-sum" type="button">+</button>
-          <button id="operator-subtract" type="button">-</button>
-          <button id="operator-multiply" type="button">x</button>
-          <button id="operator-divide" type="button">/</button>
-          <button id="operator-power" type="button">^</button>
+          <button class="btn" id="operator-sum" type="button">+</button>
+          <button class="btn" id="operator-subtract" type="button">-</button>
+          <button class="btn" id="operator-multiply" type="button">x</button>
+          <button class="btn" id="operator-divide" type="button">/</button>
+          <button class="btn" id="operator-power" type="button">^</button>
         </div>
-        <label for="second-operand">First Operand</label>
+        <label for="second-operand">Second Operand</label>
+        <br />
         <input type="text" name="second-operand" id="second-operand" />
         <br />
-        <button id="clear-button" type="button">CLEAR</button>
+        <button class="btn btn-danger" id="clear-button" type="button">CLEAR</button>
       </form>
       <div>
         <h3>Result:</h3>
-        <span id="result"></span>
+        <span id="result">The calculation result will show up here</span>
       </div>
     </main>
 

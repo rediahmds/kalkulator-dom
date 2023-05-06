@@ -1,12 +1,11 @@
 function calculate(firstOperand, secondOperand, operator) {
-  if (secondOperand === 0 && operator === '/')
+  if (isNaN(firstOperand) || isNaN(secondOperand))
     return {
       firstOperand,
       secondOperand,
       operator,
-      result: 'ERROR: zero division value',
+      result: 'Input your operand or value first!',
     };
-
   switch (operator) {
     case '+':
       return {
@@ -34,7 +33,10 @@ function calculate(firstOperand, secondOperand, operator) {
         firstOperand,
         secondOperand,
         operator,
-        result: firstOperand / secondOperand,
+        result:
+          secondOperand !== 0
+            ? firstOperand / secondOperand
+            : 'ERROR: zero divisor value',
       };
     case '^':
       return {
@@ -43,13 +45,7 @@ function calculate(firstOperand, secondOperand, operator) {
         operator,
         result: Math.pow(firstOperand, secondOperand),
       };
-    default:
-      return {
-        firstOperand,
-        secondOperand,
-        operator,
-        result: 'Please input your operands and operator',
-      };
+    // No need default case. Cuz it's impossible for user to choose options other than provided ones
   }
 }
 
@@ -67,15 +63,20 @@ function updateResult(resultObject) {
   const resultElement = document.getElementById('result');
   const { firstOperand, secondOperand, operator, result } = resultObject;
 
-  if (!firstOperand || !secondOperand)
-    resultElement.innerText = 'Input your operands first!';
-  else
-    resultElement.innerText = `${firstOperand} ${operator} ${secondOperand} = ${result}`;
+  resultElement.innerText = `${firstOperand} ${operator} ${secondOperand} = ${result}`;
+}
+
+function setOperandValueOnClear() {
+  const firstOperand = document.getElementById('first-operand');
+  const secondOperand = document.getElementById('second-operand');
+  firstOperand.value = '';
+  secondOperand.value = '';
 }
 
 function clearResult() {
   const resultElement = document.getElementById('result');
-  resultElement.innerText = '';
+  resultElement.innerText = 'The calculation result will show up here';
+  setOperandValueOnClear();
 }
 
 const sumButton = document.getElementById('operator-sum');
@@ -83,6 +84,7 @@ sumButton.addEventListener('click', function () {
   const firstOperand = getOperandValueByID('first-operand');
   const secondOperand = getOperandValueByID('second-operand');
   const result = calculate(firstOperand, secondOperand, '+');
+  console.log(result);
   updateResult(result);
 });
 
