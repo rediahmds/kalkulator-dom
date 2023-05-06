@@ -1,20 +1,55 @@
 function calculate(firstOperand, secondOperand, operator) {
   if (secondOperand === 0 && operator === '/')
-    return 'Error: Zero value divisor';
+    return {
+      firstOperand,
+      secondOperand,
+      operator,
+      result: 'ERROR: zero division value',
+    };
 
   switch (operator) {
     case '+':
-      return firstOperand + secondOperand;
+      return {
+        firstOperand,
+        secondOperand,
+        operator,
+        result: firstOperand + secondOperand,
+      };
     case '-':
-      return firstOperand - secondOperand;
+      return {
+        firstOperand,
+        secondOperand,
+        operator,
+        result: firstOperand - secondOperand,
+      };
     case 'x':
-      return firstOperand * secondOperand;
+      return {
+        firstOperand,
+        secondOperand,
+        operator,
+        result: firstOperand * secondOperand,
+      };
     case '/':
-      return firstOperand / secondOperand;
+      return {
+        firstOperand,
+        secondOperand,
+        operator,
+        result: firstOperand / secondOperand,
+      };
     case '^':
-      return Math.pow(firstOperand, secondOperand);
+      return {
+        firstOperand,
+        secondOperand,
+        operator,
+        result: Math.pow(firstOperand, secondOperand),
+      };
     default:
-      break;
+      return {
+        firstOperand,
+        secondOperand,
+        operator,
+        result: 'Please input your operands and operator',
+      };
   }
 }
 
@@ -23,15 +58,24 @@ function calculate(firstOperand, secondOperand, operator) {
  * @param {string} elementID ID of the desired HTML element we want to get value from
  * @returns {number} Operand value in form of float.
  */
-
 function getOperandValueByID(elementID) {
   const operandValue = document.getElementById(`${elementID}`).value;
   return parseFloat(operandValue);
 }
 
-function updateResult(result) {
+function updateResult(resultObject) {
   const resultElement = document.getElementById('result');
-  resultElement.innerText = result;
+  const { firstOperand, secondOperand, operator, result } = resultObject;
+
+  if (!firstOperand || !secondOperand)
+    resultElement.innerText = 'Input your operands first!';
+  else
+    resultElement.innerText = `${firstOperand} ${operator} ${secondOperand} = ${result}`;
+}
+
+function clearResult() {
+  const resultElement = document.getElementById('result');
+  resultElement.innerText = '';
 }
 
 const sumButton = document.getElementById('operator-sum');
@@ -72,4 +116,9 @@ powerButton.addEventListener('click', function () {
   const secondOperand = getOperandValueByID('second-operand');
   const result = calculate(firstOperand, secondOperand, '^');
   updateResult(result);
+});
+
+const clearButton = document.getElementById('clear-button');
+clearButton.addEventListener('click', function () {
+  clearResult();
 });
