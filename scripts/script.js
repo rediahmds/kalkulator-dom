@@ -58,7 +58,6 @@ function calculate(firstOperand, secondOperand, operator) {
  * @param {string} elementID ID of the desired HTML element we want to get value from
  * @returns {number} Operand value in form of float.
  */
-
 function getOperandValueByID(elementID) {
   const operandValue = document.getElementById(`${elementID}`).value;
   return parseFloat(operandValue);
@@ -67,7 +66,16 @@ function getOperandValueByID(elementID) {
 function updateResult(resultObject) {
   const resultElement = document.getElementById('result');
   const { firstOperand, secondOperand, operator, result } = resultObject;
-  resultElement.innerText = `${firstOperand} ${operator} ${secondOperand} = ${result}`;
+
+  if (!firstOperand || !secondOperand)
+    resultElement.innerText = 'Input your operands first!';
+  else
+    resultElement.innerText = `${firstOperand} ${operator} ${secondOperand} = ${result}`;
+}
+
+function clearResult() {
+  const resultElement = document.getElementById('result');
+  resultElement.innerText = '';
 }
 
 const sumButton = document.getElementById('operator-sum');
@@ -108,4 +116,9 @@ powerButton.addEventListener('click', function () {
   const secondOperand = getOperandValueByID('second-operand');
   const result = calculate(firstOperand, secondOperand, '^');
   updateResult(result);
+});
+
+const clearButton = document.getElementById('clear-button');
+clearButton.addEventListener('click', function () {
+  clearResult();
 });
