@@ -1,0 +1,13 @@
+.btn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 18px;
+  font-size: 15px;
+  padding: 5px 15px 5px 15px;
+  text-decoration: none;
+}
+
+.btn-danger {
+  background-color: #f01a1a;
+  color: azure;
+}
