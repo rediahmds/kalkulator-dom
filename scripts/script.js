@@ -75,7 +75,7 @@ function updateResult(resultObject) {
 
 function clearResult() {
   const resultElement = document.getElementById('result');
-  resultElement.innerText = '';
+  resultElement.innerText = 'The calculation result will show up here';
 }
 
 const sumButton = document.getElementById('operator-sum');
