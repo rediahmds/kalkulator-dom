@@ -5,6 +5,7 @@
   font-size: 15px;
   padding: 5px 15px 5px 15px;
   text-decoration: none;
+  margin: 0.5rem 0.2rem 0.5rem auto;
 }
 
 .btn-danger {
