@@ -1,20 +1,55 @@
 function calculate(firstOperand, secondOperand, operator) {
   if (secondOperand === 0 && operator === '/')
-    return 'Error: Zero value divisor';
+    return {
+      firstOperand,
+      secondOperand,
+      operator,
+      result: 'ERROR: zero division value',
+    };
 
   switch (operator) {
     case '+':
-      return firstOperand + secondOperand;
+      return {
+        firstOperand,
+        secondOperand,
+        operator,
+        result: firstOperand + secondOperand,
+      };
     case '-':
-      return firstOperand - secondOperand;
+      return {
+        firstOperand,
+        secondOperand,
+        operator,
+        result: firstOperand - secondOperand,
+      };
     case 'x':
-      return firstOperand * secondOperand;
+      return {
+        firstOperand,
+        secondOperand,
+        operator,
+        result: firstOperand * secondOperand,
+      };
     case '/':
-      return firstOperand / secondOperand;
+      return {
+        firstOperand,
+        secondOperand,
+        operator,
+        result: firstOperand / secondOperand,
+      };
     case '^':
-      return Math.pow(firstOperand, secondOperand);
+      return {
+        firstOperand,
+        secondOperand,
+        operator,
+        result: Math.pow(firstOperand, secondOperand),
+      };
     default:
-      break;
+      return {
+        firstOperand,
+        secondOperand,
+        operator,
+        result: 'Please input your operands and operator',
+      };
   }
 }
 
@@ -29,9 +64,10 @@ function getOperandValueByID(elementID) {
   return parseFloat(operandValue);
 }
 
-function updateResult(result) {
+function updateResult(resultObject) {
   const resultElement = document.getElementById('result');
-  resultElement.innerText = result;
+  const { firstOperand, secondOperand, operator, result } = resultObject;
+  resultElement.innerText = `${firstOperand} ${operator} ${secondOperand} = ${result}`;
 }
 
 const sumButton = document.getElementById('operator-sum');
